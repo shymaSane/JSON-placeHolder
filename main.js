@@ -23,5 +23,8 @@ function getUsers() {
         document.getElementById('show_results').innerHTML = output
         
     })
+    .catch((err) => {
+        console.log("there is no connection")
+    })
 }
 
