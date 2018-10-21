@@ -2,12 +2,14 @@ let button1 = document.getElementById('users_button');
 let button2 = document.getElementById('posts_button');
 let button3 = document.getElementById('comments_button');
 let form1 = document.getElementById('form-post');
-// let submit1 = document.getElementById('form');
+let submit1 = document.getElementById('submit1');
 
 
 button1.addEventListener('click', getUsers);
 button2.addEventListener('click', getPosts);
 form1.addEventListener('submit', addPost);
+submit1.addEventListener('click', addPost);
+
 
 function getUsers() {
     fetch('https://jsonplaceholder.typicode.com/users')
@@ -61,7 +63,7 @@ function getPosts() {
 
 function addPost(e) {
     // to not submit to a file(means if we didnt add this it ll submit and adds the value t the current url )
-    e.preventDeafult();
+    e.preventDefault();
     let title = document.getElementById('title').value;
     let body = document.getElementById('body').value;
     fetch('https://jsonplaceholder.typicode.com/posts', {
