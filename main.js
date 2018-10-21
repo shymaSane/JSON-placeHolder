@@ -81,3 +81,38 @@ function addPost(e) {
     .then(res => res.json())
     .then(data => console.log(data))
 }
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//promises 
+ let newPosts = ["my name is Shyma", "I love coding"]
+ let button_promise =  document.getElementById('button_promise')
+
+ button_promise.addEventListener('click', displayPosts(newPosts))
+
+function displayPosts(arr){
+    let output = ""
+    arr.forEach(post => {
+        output += `<li>${post}</li>`
+    })
+
+    document.getElementById('promise_output').innerHTML = output
+}
+
+// function creatPost(post) {
+//     newPosts.push(post)
+//     return newPosts
+// }
+
+
+//
+//the display function llonly show two post even thught the third post is in the array we can slove this buy promises
+
+function creatPost(post) {
+    return new Promise((resolve, reject) => {
+        newPosts.push(post)
+        resolve()
+    })
+}
+
+creatPost("this is my new post").then(displayPosts(newPosts))
